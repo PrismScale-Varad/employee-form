@@ -49,7 +49,8 @@ const validationSchema = Yup.object({
 });
 
 const secret = process.env.NEXT_PUBLIC_SECRET;
-const api_base = process.env.NEXT_API_URL;
+const api_base = process.env.NEXT_PUBLIC_API_URL;
+console.log(api_base)
 const handleSubmit = async (values, { setSubmitting }, files) => {
   // Create the FormData object
   const formData = new FormData();
