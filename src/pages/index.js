@@ -48,25 +48,8 @@ const validationSchema = Yup.object({
     .required("Year is required"),
 });
 
-const secret = process.env.NEXT_PUBLIC_TOTP;
-
-const generateHMACToken = () => {
-  // Get the current timestamp
-  const timestamp = Math.floor(Date.now() / 1000); // Current Unix timestamp in seconds
-
-  // Create a time window (e.g., divide by 300 for a 5-minute window)
-  const timeWindow = Math.floor(timestamp / 300);
-
-  // Create the HMAC hash using SHA-256
-  const hmac = crypto.createHmac('sha256', secret);
-  hmac.update(timeWindow.toString());
-
-  // Get the resulting hash (token)
-  const token = hmac.digest('hex');
-  
-  return { token, timestamp };
-};
-
+const secret = process.env.NEXT_PUBLIC_SECRET;
+const api_base = process.env.NEXT_API_KEY;
 const handleSubmit = async (values, { setSubmitting }, files) => {
   // Create the FormData object
   const formData = new FormData();
@@ -78,22 +61,17 @@ const handleSubmit = async (values, { setSubmitting }, files) => {
   formData.append('bloodGroup', values.blood);
   formData.append('dob', `${values.year}-${values.month}-${values.day}`);
 
-  // Generate the token and timestamp
-  const { token, timestamp } = generateHMACToken();
-  formData.append('token', token);  // Token as part of the form data
-
   // Append files
   files.forEach((file) => {
     formData.append('files', file);
   });
 
   try {
-    const response = await fetch('http://localhost:3001/form', {
+    const response = await fetch({api_base}, {
       method: 'POST',
       body: formData,
       headers: {
-        'x-totp-token': token,        // Add token to the headers
-        'x-timestamp': timestamp.toString(), // Add timestamp to the headers
+        'authentication': `Bearer ${secret}`,        // Add token to the headers
       },
       mode: 'cors', // Important for cross-origin requests
     });
