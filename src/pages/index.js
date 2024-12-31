@@ -68,11 +68,11 @@ const handleSubmit = async (values, { setSubmitting }, files) => {
   });
 
   try {
-    const response = await fetch({api_base}, {
+    const response = await fetch(`${api_base}`, {
       method: 'POST',
       body: formData,
       headers: {
-        'authentication': `Bearer ${secret}`,        // Add token to the headers
+        'authorization': `Bearer ${secret}`,        // Add token to the headers
       },
       mode: 'cors', // Important for cross-origin requests
     });
