@@ -48,7 +48,7 @@ const validationSchema = Yup.object({
     .required("Year is required"),
 });
 
-const secret = process.env.TOTP;
+const secret = process.env.NEXT_PUBLIC_TOTP;
 
 const generateHMACToken = () => {
   // Get the current timestamp
@@ -67,8 +67,7 @@ const generateHMACToken = () => {
   return { token, timestamp };
 };
 
-
-const handleSubmit = async (values, { setSubmitting }) => {
+const handleSubmit = async (values, { setSubmitting }, files) => {
   // Create the FormData object
   const formData = new FormData();
   formData.append('name', values.name);
@@ -89,7 +88,7 @@ const handleSubmit = async (values, { setSubmitting }) => {
   });
 
   try {
-    const response = await fetch('https://employee-form-backend-5932.onrender.com/form', {
+    const response = await fetch('http://localhost:3001/form', {
       method: 'POST',
       body: formData,
       headers: {
@@ -97,7 +96,6 @@ const handleSubmit = async (values, { setSubmitting }) => {
         'x-timestamp': timestamp.toString(), // Add timestamp to the headers
       },
       mode: 'cors', // Important for cross-origin requests
-      credentials: 'include',  // Include credentials (cookies)
     });
 
     if (response.status === 200) {
@@ -171,8 +169,8 @@ export default function FormPage() {
                 year: "",
               }}
               validationSchema={validationSchema}
-              onSubmit={handleSubmit()}
-            >
+              onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting }, files)} // Pass files here
+              >
               {({ setFieldValue, isSubmitting }) => (
                 <Form className="md:space-y-12 lg:px-12 md:py-8 text-xs md:text-sm lg:text-base">
                   <TextField
@@ -243,7 +241,7 @@ export default function FormPage() {
                                   className="text-red-500"
                                   onClick={() => handleFileDelete(index)}
                                 >
-                                <span class="material-icons">delete</span>
+                                  <span className="material-icons">delete</span>
                                 </button>
                               </div>
                             </div>
