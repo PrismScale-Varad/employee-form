@@ -113,13 +113,17 @@ export default function FormPage() {
             rel="stylesheet"
           />
       </Head>
-      <div className="relative w-full flex flex-col">
+      <div className="relative w-full flex flex-col items-center">
         <img src="/logo.svg" alt="Logo" className="absolute top-0 self-center z-[1]" />
-        <img src="/create1.svg" alt="Logo" className="absolute top-0 pt-12 md:pt-24 w-full self-center z-[0]" />
-        <img src="/create2.svg" alt="Logo" className="absolute top-0 pt-24 md:pt-56 lg:mt-64 w-full self-center z-[0]" />
+        <p className="absolute md:hidden top-12 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl text-gray-300/15">Create Create</p>
+        <p className="absolute md:hidden top-36 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl text-gray-300/15">Create Create Create</p>
+        <p className="absolute hidden md:block top-0 overflow-hidden whitespace-nowrap z-[0] monument-extended create text-gray-300/15">Create Create</p>
+        <p className="absolute hidden md:block top-64 overflow-hidden whitespace-nowrap z-[0] monument-extended create text-gray-300/15">Create Create Create</p>
+
       </div>
-      <img src="/EmployeeOnboarding.svg" alt="Employee Onboarding" className="w-full px-6 lg:h-16 mt-28 md:mt-32 md:h-10 self-center z-[1]" />
-      <img src="/FillDetails.svg" alt="Fill Details" className="w-full h-4 self-center mb-10 md:mb-16 mt-4 z-[1]" />
+      <p className="monument-extended text-2xl md:text-6xl mt-28 md:mt-32">Employee Onboarding</p>
+      <p className="monument-extended text-xs md:text-2xl my-2 md:mt-8 md:mb-16">Please fill the details as asked below</p>
+
       <div className="flex flex-col items-center relative max-w-screen px-3 sm:px-6 md:px-10">
         <img className="absolute top-[15%] left-[-12%]" src="/gradient glass_1.svg" alt="Glass Gradient 1"></img>
         <img className="absolute bottom-[40%] left-[85%]" src="/gradient glass_2.svg" alt="Glass Gradient 2"></img>
