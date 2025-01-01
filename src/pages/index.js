@@ -114,24 +114,24 @@ export default function FormPage() {
           />
       </Head>
       <div className="relative w-full flex flex-col items-center">
-        <img src="/logo.svg" alt="Logo" className="absolute top-0 self-center z-[1]" />
-        <p className="absolute md:hidden top-12 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl text-gray-300/15">Create Create</p>
-        <p className="absolute md:hidden top-36 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl text-gray-300/15">Create Create Create</p>
-        <p className="absolute hidden md:block top-0 overflow-hidden whitespace-nowrap z-[0] monument-extended create text-gray-300/15">Create Create</p>
-        <p className="absolute hidden md:block top-64 overflow-hidden whitespace-nowrap z-[0] monument-extended create text-gray-300/15">Create Create Create</p>
+        <img src="/logo.svg" alt="Logo" className="absolute top-0 self-center z-[1] not-selectable" />
+        <p className="absolute md:hidden top-12 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl opacity-10 bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-800 text-transparent bg-clip-text not-selectable">Create Create</p>
+        <p className="absolute md:hidden top-36 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl opacity-10 bg-gradient-to-l from-zinc-800 via-zinc-500 to-zinc-200 text-transparent bg-clip-text not-selectable">Create Create Create</p>
+        <p className="absolute hidden md:block top-0 overflow-hidden whitespace-nowrap z-[0] monument-extended create opacity-10 bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-800 text-transparent bg-clip-text not-selectable">Create Create</p>
+        <p className="absolute hidden md:block top-64 overflow-hidden whitespace-nowrap z-[0] monument-extended create_reverse opacity-10 bg-gradient-to-l from-zinc-800 via-zinc-500 to-zinc-200 text-transparent bg-clip-text not-selectable">Create Create </p>
 
       </div>
-      <p className="monument-extended text-2xl md:text-6xl mt-28 md:mt-32">Employee Onboarding</p>
-      <p className="monument-extended text-xs md:text-2xl my-2 md:mt-8 md:mb-16">Please fill the details as asked below</p>
+      <p className="monument-extended text-2xl md:text-6xl mt-28 md:mt-32 not-selectable z-[1] bg-gradient-to-b from-zinc-300 via-zinc-400 to-zinc-500 text-transparent bg-clip-text">Employee Onboarding</p>
+      <p className="text-xs md:text-2xl my-2 md:mt-8 md:mb-16 not-selectable z-[1]">Please fill the details as asked below</p>
 
       <div className="flex flex-col items-center relative max-w-screen px-3 sm:px-6 md:px-10">
-        <img className="absolute top-[15%] left-[-12%]" src="/gradient glass_1.svg" alt="Glass Gradient 1"></img>
-        <img className="absolute bottom-[40%] left-[85%]" src="/gradient glass_2.svg" alt="Glass Gradient 2"></img>
-        <img className="absolute bottom-[10%] left-[-10%]" src="/gradient glass_3.svg" alt="Glass Gradient 3"></img>
+        <img className="absolute top-[15%] left-[-12%] not-selectable" src="/gradient glass_1.svg" alt="Glass Gradient 1"></img>
+        <img className="absolute bottom-[40%] left-[85%] not-selectable" src="/gradient glass_2.svg" alt="Glass Gradient 2"></img>
+        <img className="absolute bottom-[10%] left-[-10%] not-selectable" src="/gradient glass_3.svg" alt="Glass Gradient 3"></img>
         <div
-          className="flex flex-col rounded-3xl border border-gray-200 max-w-screen-sm lg:max-w-screen-lg w-full backdrop-blur-md md:backdrop-blur-sm"
+          className="flex flex-col rounded-3xl border border-gray-200 max-w-screen-sm lg:max-w-screen-lg w-full backdrop-blur-sm"
           style={{
-            background: 'linear-gradient(45deg, rgba(14, 14, 14, 0.5), rgba(34, 34, 34, 0.3), rgba(84, 84, 84, 0.20), rgba(14, 14, 14, 0.8), rgba(14, 14, 14, 0.8))',
+            background: 'linear-gradient(45deg, rgba(14, 14, 14, 0.5), rgba(34, 34, 34, 0.3), rgba(84, 84, 84, 0.2), rgba(14, 14, 14, 0.8), rgba(14, 14, 14, 0.8))',
           }}
         >
           <div className="w-32 relative border-t-[3px] border-gray-300 self-center">
