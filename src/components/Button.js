@@ -13,7 +13,7 @@ export default function Button({ type = "button", onClick, children, disabled, c
           type={type}
           onClick={onClick}
           disabled={disabled}
-          className={`group-hover:bg-[#252525]/90 text-white bg-[#252525] backdrop-blur-md rounded-full transition-all duration-300
+          className={`group-hover:bg-[#252525]/90 text-white bg-[#252525] backdrop-blur-md rounded-full transition-all duration-500
             ${disabled
               ? "cursor-not-allowed grayscale"
               : ""}
@@ -25,7 +25,7 @@ export default function Button({ type = "button", onClick, children, disabled, c
       {/* Gradient Image */}
       <div>
         <img
-          className="absolute top-0 opacity-20 h-full w-full scale-[110%] group-hover:opacity-30 group-hover:blur transition-all duration-700 z-[-1] blur-lg"
+          className="absolute top-0 opacity-20 h-full w-full scale-[110%] group-hover:opacity-30 group-hover:blur transition-all duration-300 z-[-1] blur-lg"
           src="/button_gradient.svg"
         />
       </div>

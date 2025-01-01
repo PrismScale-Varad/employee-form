@@ -236,7 +236,7 @@ export default function FormPage() {
 
                   <div className="flex justify-between mt-4">
                     <Button onClick={() => document.getElementById('fileInput').click()} type="button">
-                      <img className="w-36 lg:w-56 md:w-44" src="/AddButton.svg" alt="Add" />
+                      <p className="monument-extended py-4 w-36 lg:w-56 md:w-44">Add File +</p>
                     </Button>
                     <input
                       id="fileInput"
@@ -247,7 +247,7 @@ export default function FormPage() {
                       onChange={handleFileChange}
                     />
                     <Button type="submit" disabled={isSubmitting}>
-                      <img className="w-36 lg:w-56 md:w-44" src="/SUBMIT.svg" alt="Submit" />
+                      <p className="monument-extended py-4 w-36 lg:w-56 md:w-44">Submit</p>
                     </Button>
                   </div>
                 </Form>
