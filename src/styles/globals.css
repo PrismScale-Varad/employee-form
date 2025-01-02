@@ -35,14 +35,14 @@ body {
   font-size: 14rem !important;
   font-weight: 700 !important;
   margin-top: 20px;
-  animation: scrollHorizontal 10s linear infinite; /* Apply the animation */
+  animation: scrollHorizontal 20s linear infinite; /* Apply the animation */
 }
 
 .create_reverse {
   font-size: 14rem !important;
   font-weight: 700 !important;
   margin-top: 20px;
-  animation: scrollHorizontal_reverse 10s linear infinite; /* Apply the animation */
+  animation: scrollHorizontal_reverse 20s linear infinite; /* Apply the animation */
 }
 
 /* Keyframes for the horizontal scroll */
@@ -50,8 +50,11 @@ body {
   0% {
     transform: translateX(-150%);
   }
-  100% {
+  50% {
     transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(-150%);
   }
 }
 
@@ -59,8 +62,11 @@ body {
   0% {
     transform: translateX(150%);
   }
-  100% {
+  50% {
     transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
   }
 }
 
