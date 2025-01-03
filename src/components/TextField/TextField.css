@@ -1,0 +1,7 @@
+.label {
+    @apply block font-medium mb-2;
+}
+
+.text_field {
+    @apply w-full p-4 bg-zinc-200 bg-opacity-[20%] backdrop-blur-md border border-gray-300 rounded-xl hover:shadow-zinc-400/20 shadow-lg focus:shadow-zinc-200/20 focus:shadow-xl hover:bg-opacity-[25%] focus:bg-opacity-[30%] focus:outline-none transition-all ease-in-out duration-300 
+}

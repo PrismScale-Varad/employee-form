@@ -1,11 +1,11 @@
 import { Formik, Field, Form } from "formik";
-import Button from "../components/Button";
-import TextField from "../components/TextField";
+import Button from "../components/Button/Button";
+import TextField from "../components/TextField/TextField";
 import { useState } from "react";
 import Head from "next/head";
 import { Poppins } from 'next/font/google'
 import validationSchema from "./utils/validation";
-import FilePreview from "@/components/FilePreview";
+import FilePreview from "../components/FilePreview/FilePreview";
 import Image from "next/image"
 
 const poppins = Poppins({

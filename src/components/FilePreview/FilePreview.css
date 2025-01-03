@@ -1,0 +1,7 @@
+.images_container {
+    @apply flex flex-wrap gap-4
+}
+
+.image {
+    @apply relative flex flex-col items-center gap-2
+}
