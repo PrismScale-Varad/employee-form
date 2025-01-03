@@ -1,56 +1,20 @@
 import { Formik, Field, Form } from "formik";
-import * as Yup from "yup";
 import Button from "../components/Button";
 import TextField from "../components/TextField";
 import { useState } from "react";
 import Head from "next/head";
 import { Poppins } from 'next/font/google'
-import crypto from 'crypto';
+import validationSchema from "./utils/validation";
+import FilePreview from "@/components/FilePreview";
+import Image from "next/image"
 
 const poppins = Poppins({
   weight: '400',
   subsets: ['latin'],
 })
 
-// Define validation schema using Yup
-const validationSchema = Yup.object({
-  name: Yup.string()
-    .matches(/^[a-zA-Z\s]*$/, "No numbers allowed")
-    .max(25, "Name must be less than or equal to 25 characters")
-    .required("Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  designation: Yup.string()
-    .matches(/^[a-zA-Z\s]*$/, "No numbers allowed")
-    .max(25, "Designation must be less than or equal to 25 characters")
-    .required("Designation is required"),
-  employeeid: Yup.string()
-    .matches(/^\d{3}$/, "Employee ID must be exactly 3 digits")
-    .required("Employee ID is required"),
-  phone: Yup.string()
-    .matches(/^\+91 \d{10}$/, "Invalid phone number")
-    .required("Phone number is required"),
-  blood: Yup.string()
-    .matches(/^(A|B|AB|O)[+-]$/, "Invalid blood group")
-    .required("Blood group is required"),
-  day: Yup.number()
-    .min(1, "Invalid day")
-    .max(31, "Invalid day")
-    .required("Day is required"),
-  month: Yup.number()
-    .min(1, "Invalid month")
-    .max(12, "Invalid month")
-    .required("Month is required"),
-  year: Yup.number()
-    .min(1900, "Invalid year")
-    .max(new Date().getFullYear(), "Invalid year")
-    .required("Year is required"),
-});
-
 const secret = process.env.NEXT_PUBLIC_SECRET;
 const api_base = process.env.NEXT_PUBLIC_API_URL;
-console.log(api_base)
 const handleSubmit = async (values, { setSubmitting }, files) => {
   // Create the FormData object
   const formData = new FormData();
@@ -106,15 +70,10 @@ export default function FormPage() {
   };
 
   return (
-    <div className={` ${poppins.className} relative flex flex-col items-center justify-start min-h-screen bg-[url('/backdrop.svg')] bg-cover bg-top pb-20 overflow-hidden`}>
-      <Head>
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-          />
-      </Head>
+    <div className={` ${poppins.className} relative flex flex-col items-center justify-start min-h-screen bg-[url('/backdrop.webp')] bg-cover bg-top pb-20 overflow-hidden`}>
+
       <div className="relative w-full flex flex-col items-center">
-        <img src="/logo.svg" alt="Logo" className="absolute top-0 self-center z-[1] not-selectable" />
+        <Image src="/logo.webp" width={1000} height={100} alt="Logo" className="absolute top-0 self-center z-[1] not-selectable" />
         <p className="absolute md:hidden top-12 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl opacity-10 bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-800 text-transparent bg-clip-text not-selectable">Create Create</p>
         <p className="absolute md:hidden top-36 overflow-hidden whitespace-nowrap z-[0] monument-extended text-8xl opacity-10 bg-gradient-to-l from-zinc-800 via-zinc-500 to-zinc-200 text-transparent bg-clip-text not-selectable">Create Create Create</p>
         <p className="absolute hidden md:block top-0 overflow-hidden whitespace-nowrap z-[0] monument-extended create opacity-10 bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-800 text-transparent bg-clip-text not-selectable">Create Create</p>
@@ -125,9 +84,9 @@ export default function FormPage() {
       <p className="text-xs md:text-2xl my-2 md:mt-8 md:mb-16 not-selectable z-[1]">Please fill the details as asked below</p>
 
       <div className="flex flex-col items-center relative max-w-screen px-3 sm:px-6 md:px-10">
-        <img className="absolute top-[15%] left-[-12%] not-selectable" src="/gradient glass_1.svg" alt="Glass Gradient 1"></img>
-        <img className="absolute bottom-[40%] left-[85%] not-selectable" src="/gradient glass_2.svg" alt="Glass Gradient 2"></img>
-        <img className="absolute bottom-[10%] left-[-10%] not-selectable" src="/gradient glass_3.svg" alt="Glass Gradient 3"></img>
+        <Image className="absolute top-[15%] left-[-12%] not-selectable" width={200} height={100} src="/gradient glass_1.webp" alt="Glass Gradient 1" />
+        <Image className="absolute bottom-[40%] left-[85%] not-selectable" width={200} height={100} src="/gradient glass_2.webp" alt="Glass Gradient 2" />
+        <Image className="absolute bottom-[10%] left-[-10%] not-selectable" width={300} height={100} src="/gradient glass_3.webp" alt="Glass Gradient 3" />
         <div
           className="flex flex-col rounded-3xl border border-gray-200 max-w-screen-sm lg:max-w-screen-lg w-full backdrop-blur-sm"
           style={{
@@ -135,7 +94,7 @@ export default function FormPage() {
           }}
         >
           <div className="w-32 relative border-t-[3px] border-gray-300 self-center">
-            <img className="absolute top-0 opacity-50 scale-[120%] blur-lg z-[-1]" src='/form_gradient.svg'></img>
+            <img className="absolute top-0 opacity-50 scale-[120%] blur-lg z-[-1]" src='/form_gradient.webp' />
           </div>
 
           <div className="p-4 md:px-12 py-12 px-6">
@@ -152,7 +111,7 @@ export default function FormPage() {
                 year: "",
               }}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting }, files)} // Pass files here
+              onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting }, files)}
               >
               {({ setFieldValue, isSubmitting }) => (
                 <Form className="md:space-y-12 lg:px-12 md:py-8 text-xs md:text-sm lg:text-base">
@@ -207,36 +166,12 @@ export default function FormPage() {
                   <div className="mt-4">
                     <p className="block mb-1">Upload photo for ID card. Please give us options (Min 2) (See preview for photo of relevant orientation)</p>
                     <p className="block mb-6 text-blue-400">Upload up to 5 supported files. Max 10 MB per file.</p>
-
-                    <div className="mb-4">
-                      {files.length > 0 && (
-                        <div className="flex flex-wrap gap-4">
-                          {files.map((file, index) => (
-                            <div key={index} className="relative">
-                              <div className="flex flex-col items-center gap-2">
-                                <img
-                                  className="w-16 h-16 object-cover rounded-md"
-                                  src={URL.createObjectURL(file)}
-                                  alt={`file-preview-${index}`}
-                                />
-                                <button
-                                  type="button"
-                                  className="text-red-500"
-                                  onClick={() => handleFileDelete(index)}
-                                >
-                                  <span className="material-icons">delete</span>
-                                </button>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    <FilePreview files={files} handleFileDelete={handleFileDelete} />
                   </div>
 
                   <div className="flex justify-between mt-4">
                     <Button onClick={() => document.getElementById('fileInput').click()} type="button">
-                      <p className="monument-extended py-4 w-36 lg:w-56 md:w-44">Add File +</p>
+                      Add File +
                     </Button>
                     <input
                       id="fileInput"
@@ -247,7 +182,7 @@ export default function FormPage() {
                       onChange={handleFileChange}
                     />
                     <Button type="submit" disabled={isSubmitting}>
-                      <p className="monument-extended py-4 w-36 lg:w-56 md:w-44">Submit</p>
+                      Submit
                     </Button>
                   </div>
                 </Form>

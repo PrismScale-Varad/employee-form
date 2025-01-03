@@ -13,7 +13,7 @@ export default function Button({ type = "button", onClick, children, disabled, c
           type={type}
           onClick={onClick}
           disabled={disabled}
-          className={`group-hover:bg-[#252525]/90 text-white bg-[#252525] backdrop-blur-md rounded-full transition-all duration-500
+          className={`group-hover:bg-[#252525]/90 text-white bg-[#252525] backdrop-blur-md rounded-full transition-all duration-500 monument-extended py-4 w-36 lg:w-56 md:w-44
             ${disabled
               ? "cursor-not-allowed grayscale"
               : ""}
